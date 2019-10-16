@@ -9,6 +9,7 @@ const app = express();
 const registerUsers = require("./routes/registerUsers");
 const login = require("./routes/login");
 const users = require("./routes/users");
+const search = require("./routes/searchRoute");
 const cors = require("cors");
 
 //Config
@@ -36,6 +37,7 @@ app.use(helmet());
 app.use("/registerUsers", registerUsers);
 app.use("/login", login);
 app.use("/users", users);
+app.use("/search", search);
 
 if (app.get("env") === "development") {
   startupDebugger("Morgan is enabled...");
