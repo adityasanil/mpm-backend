@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
+const mongoostatic = require("mongoosastic");
 
 const personaDetailsSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
@@ -33,6 +34,11 @@ const personaDetailsSchema = new mongoose.Schema({
   bloodGroup: { type: String, required: true }
 });
 
+personaDetailsSchema.plugin(mongoostatic, {
+  host: "localhost",
+  port: 9200
+});
+
 // userSchema.methods.generateAuthToken = function() {
 //   const token = jwt.sign(
 //     {
@@ -46,6 +52,10 @@ const personaDetailsSchema = new mongoose.Schema({
 // };
 
 const PersonalDetails = mongoose.model("PersonalDetails", personaDetailsSchema);
+
+PersonalDetails.createMapping((err, mapping) => {
+  console.log("mapping created");
+});
 
 function validateUser(personaDetailsSchema) {
   const schema = {

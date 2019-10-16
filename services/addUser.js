@@ -13,6 +13,7 @@ async function registerUser(req, res) {
   const result = await user.save();
 
   headerResponse(user, res);
+  personalDetail(req);
 
   return result;
 }

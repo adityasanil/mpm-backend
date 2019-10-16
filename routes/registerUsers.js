@@ -10,8 +10,16 @@ router.post("/", async (req, res) => {
   const { error } = validatePD(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  let user = await User.findOne({ email: req.body.email });
-  if (user) return res.status(400).send("User already registered!");
+  let userEmail = await User.findOne({
+    email: req.body.email
+  });
+  if (userEmail)
+    return res.status(400).send("User with this email-ID registered already!");
+
+  let userName = await User.findOne({
+    username: req.body.username
+  });
+  if (userName) return res.status(400).send("Choose a different username");
 
   // user = new User({
   //   username: req.body.username,
@@ -19,9 +27,7 @@ router.post("/", async (req, res) => {
   //   password: req.body.password
   // });
 
-  registerUser(req.body, res)
-    .then(personalDetail(req.body))
-    .catch(err => console.log(err));
+  registerUser(req.body, res).catch(err => console.log(err));
 });
 
 module.exports = router;
