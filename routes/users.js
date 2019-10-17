@@ -16,4 +16,11 @@ router.get("/:email", async (req, res) => {
   res.send(user);
 });
 
+router.get("/:id", async (req, res) => {
+  let user = await PersonalDetail.findById(req.params.id).select(
+    "-password -isAdmin -__v"
+  );
+  res.send(user);
+});
+
 module.exports = router;
