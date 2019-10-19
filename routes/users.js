@@ -9,6 +9,13 @@ router.get("/", async (req, res) => {
   res.send(users);
 });
 
+router.get("/industry/:industry", async (req, res) => {
+  let userList = await PersonalDetail.find({
+    industry: req.params.industry
+  }).select("-password -isAdmin -__v");
+  res.send(userList);
+});
+
 router.get("/:email", async (req, res) => {
   let user = await PersonalDetail.findOne({ email: req.params.email }).select(
     "-password -isAdmin -__v"
