@@ -1,5 +1,6 @@
 const _ = require("lodash");
 const bcrypt = require("bcrypt");
+const randomString = require("randomstring");
 const { PersonalDetail, validatePD } = require("../models/PersonalDetails");
 const { User, validate } = require("../models/Users");
 
@@ -7,7 +8,9 @@ async function registerUser(req, res) {
   user = new User(_.pick(req, ["username", "email"]));
 
   const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash("123456789", salt);
+  const passString = randomString.generate(10);
+  user.password = await bcrypt.hash(passString, salt);
+  // user.password = await bcrypt.hash("123456789", salt);
   user.isAdmin = false;
 
   const result = await user.save();
