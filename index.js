@@ -17,6 +17,13 @@ if (!config.get("jwtPrivateKey")) {
   console.error("FATAL ERROR: jwtPrivateKey is not defined.");
   process.exit(1);
 }
+
+if (!config.get("mailAccountPassword")) {
+  console.error(
+    "FATAL ERROR: Mail password (mpm_mailPassword) is not defined."
+  );
+  process.exit(1);
+}
 // console.log("Applicatio name: " + config.get("name"));
 // console.log("Mail server: " + config.get("mail.host"));
 // console.log("Mail server password: " + config.get("mail.password"));

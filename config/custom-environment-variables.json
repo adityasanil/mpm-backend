@@ -1,3 +1,4 @@
 {
-  "jwtPrivateKey": "mpm_jwtPrivateKey"
+  "jwtPrivateKey": "mpm_jwtPrivateKey",
+  "mailAccountPassword": "mpm_mailPassword"
 }

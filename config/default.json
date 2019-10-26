@@ -1,5 +1,7 @@
 {
   "jwtPrivateKey": "",
   "dbConnect": "mongodb://localhost:27017/maheshwariDB",
-  "requiresAuth": true
+  "requiresAuth": true,
+  "mailAccount": "bsm2020mpm@gmail.com",
+  "mailAccountPassword": ""
 }
