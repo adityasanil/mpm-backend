@@ -45,6 +45,7 @@ app.use("/registerUsers", registerUsers);
 app.use("/login", login);
 app.use("/users", users);
 app.use("/search", search);
+app.use("/myAccount", registerUsers);
 
 if (app.get("env") === "development") {
   startupDebugger("Morgan is enabled...");

@@ -5,6 +5,7 @@ const { validatePD } = require("../models/PersonalDetails");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const { registerUser, personalDetail } = require("../services/addUser");
+const { PersonalDetail } = require("../models/PersonalDetails");
 
 router.post("/", async (req, res) => {
   const { error } = validatePD(req.body);
@@ -28,6 +29,20 @@ router.post("/", async (req, res) => {
   // });
 
   registerUser(req.body, res).catch(err => console.log(err));
+});
+
+router.put("/:id", async (req, res) => {
+  // res.json(req.body);
+  const updateObj = req.body;
+  const user = await PersonalDetail.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: updateObj
+    },
+    { new: true }
+  );
+  if (!user) res.status(404).send("User with email id not found");
+  res.send(user);
 });
 
 module.exports = router;
