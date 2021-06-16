@@ -26,7 +26,8 @@
     "mongoose": "^5.7.1",
     "morgan": "^1.9.1",
     "nodemailer": "^6.3.1",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
+    "textbelt": "github:minond/textbelt"
   },
   "devDependencies": {}
 }
