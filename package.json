@@ -23,7 +23,7 @@
     "lodash": "^4.17.15",
     "mongodb": "^3.3.3",
     "mongoosastic": "^4.5.1",
-    "mongoose": "^5.7.1",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "nodemailer": "^6.3.1",
     "randomstring": "^1.1.5"
